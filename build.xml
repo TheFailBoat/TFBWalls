@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tfbwalls" default="all"> 
+  <property file="tfbwalls.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.yml"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+    <include name="**/?*.ftl"/>
+  </patternset>
+  
+  
+  <!-- Project Libraries -->
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module tfbwalls -->
+  
+  <dirname property="module.tfbwalls.basedir" file="${ant.file}"/>   
+  
+  <property name="compiler.args.tfbwalls" value="${compiler.args}"/>
+  
+  <property name="tfbwalls.output.dir" value="${module.tfbwalls.basedir}/bin"/>
+  
+  <path id="tfbwalls.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="tfbwalls.module.production.classpath">
+      <fileset dir="${module.tfbwalls.basedir}/lib" includes="**/*.jar"/>
+  </path>
+  
+  <path id="tfbwalls.runtime.production.module.classpath">
+    <pathelement location="${tfbwalls.output.dir}"/>
+  </path>
+  
+  <path id="tfbwalls.module.classpath">
+    <pathelement location="${tfbwalls.output.dir}"/>
+  </path>
+  
+  <path id="tfbwalls.runtime.module.classpath">
+    <pathelement location="${tfbwalls.testoutput.dir}"/>
+    <pathelement location="${tfbwalls.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.tfbwalls">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.tfbwalls">
+    <patternset refid="excluded.from.module.tfbwalls"/>
+  </patternset>
+  
+  <path id="tfbwalls.module.sourcepath">
+    <dirset dir="${module.tfbwalls.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+   
+  <target name="compile.module.tfbwalls" description="Compile module tfbwalls; production classes">
+    <mkdir dir="${tfbwalls.output.dir}"/>
+    <javac destdir="${tfbwalls.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" includeantruntime="false">
+      <compilerarg line="${compiler.args.tfbwalls}"/>
+      <bootclasspath refid="tfbwalls.module.bootclasspath"/>
+      <classpath refid="tfbwalls.module.production.classpath"/>
+      <src refid="tfbwalls.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.tfbwalls"/>
+    </javac>
+    
+    <copy todir="${tfbwalls.output.dir}">
+      <fileset dir="${module.tfbwalls.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+	
+	<jar jarfile="tfbwalls.jar" basedir="${tfbwalls.output.dir}">
+		<manifest>
+ 	 		<attribute name="Built-By" value="${user.name}" />
+		</manifest>
+	</jar>
+  </target>
+    
+  <target name="clean.module.tfbwalls" description="cleanup module">
+    <delete dir="${tfbwalls.output.dir}"/>
+    <delete dir="${tfbwalls.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.tfbwalls" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.tfbwalls" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>

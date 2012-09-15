@@ -1,0 +1,6 @@
+#ignore thumbnails created by windows
+Thumbs.db
+
+[Bb]in
+tfbwalls.jar
+*.class
