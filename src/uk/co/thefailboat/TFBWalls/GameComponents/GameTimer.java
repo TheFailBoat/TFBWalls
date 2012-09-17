@@ -26,13 +26,19 @@ public class GameTimer {
 	private GameEvent event;
 	
 	public GameTimer(JavaPlugin _plugin, String _countStartMessage, String _countDownMessage, String _countOverMessage, int _seconds, GameEvent _event){
+		
+		
 		countStartMessage = _countStartMessage;
 		countOverMessage = _countOverMessage;
 		countDownMessage = _countDownMessage;
+		
 		plugin = _plugin;
+		
 		seconds = _seconds; //store the original seconds, so we can restart the timer with its defaults.
 		secsLeft = seconds + 1; //when we tick for the first time, this will enable a message to appear if specified.
+		
 		event = _event; //will execute when time is up.
+		
 		timerMessages.put(900, ChatColor.GOLD + "in 15 Minutes.");
 		timerMessages.put(840, ChatColor.GOLD + "in 14 Minutes.");
 		timerMessages.put(780, ChatColor.GOLD + "in 13 Minutes.");
@@ -49,7 +55,7 @@ public class GameTimer {
 		timerMessages.put(120, ChatColor.GOLD + "in 2 Minutes.");
 		timerMessages.put(60, ChatColor.RED + "in 1 Minute!");
 		timerMessages.put(30, ChatColor.RED + "in 30 Seconds!");
-		timerMessages.put(20, ChatColor.RED + "in 20 Seconds!");
+		//timerMessages.put(20, ChatColor.RED + "in 20 Seconds!");
 		timerMessages.put(10, ChatColor.RED + "in 10 Seconds!");
 		timerMessages.put(9, ChatColor.RED + "in 9 Seconds!");
 		timerMessages.put(8, ChatColor.RED + "in 8 Seconds!");
@@ -65,19 +71,31 @@ public class GameTimer {
 	public boolean Running(){
 		return running ? true : false;
 	}
-	
+	/**
+	 * Restarts the Timer from the original number of seconds.
+	 */
 	public void Restart(){
 		secsLeft = seconds + 1;
 		this.Start();
 	}
-	
+	/**
+	 * Start the timer from the current number of seconds.
+	 */
 	public void Start(){
 		running = true;
 		plugin.getServer().broadcastMessage(ChatColor.AQUA + countStartMessage);
 		tick();
 	}
-	
+	/**
+	 * Stop the timer and reset the number of seconds.
+	 */
 	public void Stop(){
+		running = false;
+	}
+	/**
+	 * Stop the timer and reset the number of seconds.
+	 */
+	public void Pause(){
 		running = false;
 	}
 	
