@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import uk.co.thefailboat.TFBWalls.GameComponents.GameEvent;
 import uk.co.thefailboat.TFBWalls.GameComponents.GameTimer;
 import uk.co.thefailboat.TFBWalls.GameComponents.Events.InitGameEvent;
+import uk.co.thefailboat.TFBWalls.GameComponents.Events.WallsDownEvent;
 
 public class TimerTest implements CommandExecutor{
 	private JavaPlugin plugin;
@@ -18,7 +19,7 @@ public class TimerTest implements CommandExecutor{
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lavel, String[] args){
-		GameEvent event_init = new InitGameEvent(plugin);
+		GameEvent event_init = new WallsDownEvent(plugin);
 		GameEvent event_start = new GameEvent(){
 			public void run() {
 				plugin.getServer().broadcastMessage("EVENT WORKS!");
@@ -26,9 +27,9 @@ public class TimerTest implements CommandExecutor{
 		};
 		
 		GameTimer gt_init = new GameTimer(plugin, "STARTED", "Will end", "ENDED", 5, event_init);	
-		GameTimer gt_start = new GameTimer(plugin, "STARTED", "Will end", "ENDED", 125, event_start);	
+		//GameTimer gt_start = new GameTimer(plugin, "STARTED", "Will end", "ENDED", 125, event_start);	
 		gt_init.Start();
-		gt_start.Start();
+		//gt_start.Start();
 		return true;
 	}
 }
