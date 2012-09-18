@@ -21,6 +21,6 @@ public class Statics {
 	
 	public static int mapx = 286;
 	public static int mapz = -853;
-	public static int mapdx = Math.abs(286 - 408);
-	public static int mapdz = Math.abs(-853 - -731);
+	public static int mapdx = Math.abs(286 - 409);
+	public static int mapdz = Math.abs(-855 - -731);
 }
