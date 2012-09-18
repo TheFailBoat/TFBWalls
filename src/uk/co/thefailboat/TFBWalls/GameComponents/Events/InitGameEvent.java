@@ -20,7 +20,6 @@ public class InitGameEvent extends GameEvent {
 	}
 
 	public void run(){
-		plugin.getServer().broadcastMessage("DOING THING!");
 		World world = plugin.getServer().getWorld("world");
 		
 		int x = 0; int y = 0; int z = 0;
@@ -46,6 +45,5 @@ public class InitGameEvent extends GameEvent {
 				b.setTypeId(7);
 			}
 		}
-		plugin.getServer().broadcastMessage("DONE THING!");
 	};
 }
