@@ -63,4 +63,11 @@ public class Team {
 		}
 		return false;
 	}
+	/**
+	 * Get the team number
+	 * @return An integer that is the team number
+	 */
+	public int GetNumber(){
+		return number;
+	}
 }
