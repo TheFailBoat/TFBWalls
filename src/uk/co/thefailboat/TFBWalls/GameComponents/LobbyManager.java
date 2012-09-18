@@ -14,6 +14,7 @@ public class LobbyManager {
 	private GameTimer lobbyTimer;
 	private List<Team> teams = new ArrayList<Team>();
 	private List<Player> lobbyPlayers = new ArrayList<Player>();
+	private PlayerMessagePipe messagePipe = new PlayerMessagePipe();
 	private Main instance;
 	
 	/**
