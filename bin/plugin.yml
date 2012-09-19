@@ -20,3 +20,7 @@ commands:
          description: Get the current position of the player and output to console (Debug)
          permission: tfbwalls.getpos
          usage: /getpos
+   ToggleFreeze:
+         description: Toggle the freeze state of the current player, or yourself.
+         permission: tfbwalls.togglefreeze
+         usage: /togglefreeze {Player}

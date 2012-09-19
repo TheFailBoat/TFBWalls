@@ -26,6 +26,9 @@ public class Main extends JavaPlugin{
 		//Register commands
 		getCommand("TimerTest").setExecutor(new TimerTest(this));
 		getCommand("Getpos").setExecutor(new Getpos(this));
+		getCommand("ToggleFreeze").setExecutor(new ToggleFreeze(this));
+		getCommand("Kick").setExecutor(new Kick(this));
+		getCommand("KickAll").setExecutor(new Kick(this));
 		
 		Lobby = new LobbyManager(this, this);
 		Game = new GameManager(this, this);
