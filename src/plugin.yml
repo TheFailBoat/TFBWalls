@@ -4,6 +4,10 @@ version: 0.2-DEV
 author: TFB
 
 commands:
+   Team:
+         description: Join or leave a Walls Team
+         permission: tfbwalls.game.team
+         usage: /team [1, 2, 3, 4, leave]
    TimerTest:
          description: Test the timer
          permission: tfbwalls.timer.test

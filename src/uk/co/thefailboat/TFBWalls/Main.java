@@ -23,12 +23,13 @@ public class Main extends JavaPlugin{
 		getServer().getPluginManager().registerEvents(entityListener, this);
 		getServer().getPluginManager().registerEvents(playerListener, this);
 		
-		//Register commands
+		//Register command executors
 		getCommand("TimerTest").setExecutor(new TimerTest(this));
 		getCommand("Getpos").setExecutor(new Getpos(this));
 		getCommand("ToggleFreeze").setExecutor(new ToggleFreeze(this));
 		getCommand("Kick").setExecutor(new Kick(this));
 		getCommand("KickAll").setExecutor(new Kick(this));
+		getCommand("Team").setExecutor(new Team(this));
 		
 		Lobby = new LobbyManager(this, this);
 		Game = new GameManager(this, this);
