@@ -7,7 +7,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import uk.co.thefailboat.TFBWalls.GameComponents.GameEvent;
 import uk.co.thefailboat.TFBWalls.GameComponents.GameTimer;
-import uk.co.thefailboat.TFBWalls.GameComponents.Events.InitGameEvent;
 import uk.co.thefailboat.TFBWalls.GameComponents.Events.WallsDownEvent;
 
 public class TimerTest implements CommandExecutor{

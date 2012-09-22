@@ -1,8 +1,14 @@
 package uk.co.thefailboat.TFBWalls.GameComponents;
+
 /**
- * A class that can contain a Method to be run when asked.
- * This can be used to 
+ * Represents an Event in the game.
+ * @author James
+ *
  */
 public abstract class GameEvent {
+	
+	/**
+	 * The code to run when the event is triggered.
+	 */
 	public abstract void run();
 }

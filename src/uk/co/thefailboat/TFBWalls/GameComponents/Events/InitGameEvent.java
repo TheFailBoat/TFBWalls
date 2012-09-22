@@ -1,10 +1,5 @@
 package uk.co.thefailboat.TFBWalls.GameComponents.Events;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.bukkit.*;
 import org.bukkit.block.*;
 import org.bukkit.plugin.java.*;

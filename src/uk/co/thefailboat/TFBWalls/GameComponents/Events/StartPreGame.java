@@ -1,18 +1,10 @@
 package uk.co.thefailboat.TFBWalls.GameComponents.Events;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.bukkit.*;
-import org.bukkit.block.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.*;
 
-import uk.co.thefailboat.TFBWalls.Statics;
 import uk.co.thefailboat.TFBWalls.GameComponents.GameEvent;
 import uk.co.thefailboat.TFBWalls.GameComponents.MapReferences;
 import uk.co.thefailboat.TFBWalls.GameComponents.Team;

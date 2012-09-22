@@ -26,6 +26,10 @@ public class Statics {
 	 * List of players that are not allowed to move from their current position (pre-game, game freezes etc.
 	 */
 	public static List<Player> FrozenPlayers = new ArrayList<Player>();
+	/**
+	 * The number of players required to start a game.
+	 */
+	public static final int MinGamePlayers = 1;
 	
 	//TODO: These should eventually move into MapReferences.
 	public static int mapx = 286;
