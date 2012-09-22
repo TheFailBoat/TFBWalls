@@ -63,6 +63,15 @@ public class Team {
 		}
 		return false;
 	}
+	
+	/**
+	 * Checks if a player is in the team
+	 * @param player The player to search for
+	 * @return True if the player is in the team
+	 */
+	public boolean ContainsPlayer(Player player){
+		return players.contains(player);
+	}
 	/**
 	 * Get the team number
 	 * @return An integer that is the team number

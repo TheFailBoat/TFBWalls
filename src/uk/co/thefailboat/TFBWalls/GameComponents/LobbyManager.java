@@ -3,16 +3,16 @@ package uk.co.thefailboat.TFBWalls.GameComponents;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import uk.co.thefailboat.TFBWalls.Main;
 import uk.co.thefailboat.TFBWalls.Statics;
 
-public class LobbyManager {
+public class LobbyManager extends Manager{
 	private JavaPlugin plugin;
 	private GameTimer lobbyTimer;
-	private List<Team> teams = new ArrayList<Team>();
 	private List<Player> lobbyPlayers = new ArrayList<Player>();
 	private PlayerMessagePipe messagePipe = new PlayerMessagePipe();
 	private Main instance;
@@ -49,8 +49,36 @@ public class LobbyManager {
 	public void AttachPlayer(Player player){
 		Statics.log.info(Statics.prefix + "Added player " + player.getDisplayName() + "to this lobby.");
 		lobbyPlayers.add(player);
+		//this.attemptStart();
+	}
+	/**
+	 * Attempts to start the countdown to pre-game. Checks number of players etc.
+	 */
+	private void attemptStart() {
+		if(lobbyPlayers.size() >= Statics.MinGamePlayers){
+			//We have enough players, so make sure they are all in teams.
+			for(Player p : lobbyPlayers){
+				if(GetPlayersTeamNumber(p) == -1){
+					autoAssignTeam(p);
+					p.sendMessage(ChatColor.GOLD + "You have been automatically assigned to Team " + GetPlayersTeam(p).GetNumber());
+				}
+			}
+		}
 	}
 	
+	/**
+	 * Assigns a player to the first team with a space
+	 * @param player The player to add
+	 */
+	private void autoAssignTeam(Player player){
+		if(GetPlayersTeamNumber(player) != -1) return; //We do NOT want a player to appear in multiple teams...
+		for(Team t : teams){
+			if(!t.isFull){
+				t.AddPlayer(player);
+			}
+		}
+	}
+
 	/**
 	 * Removes the player from the list of Players in the lobby
 	 * @param player The player to remove from the Lobby.

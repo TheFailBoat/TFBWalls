@@ -1,15 +1,13 @@
 package uk.co.thefailboat.TFBWalls.GameComponents;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.plugin.java.JavaPlugin;
 
 import uk.co.thefailboat.TFBWalls.Main;
 
-public class GameManager {
+public class GameManager extends Manager {
 	private GameTimer wallsTimer;
-	private List<Team> teams = new ArrayList<Team>();
+	
 	private JavaPlugin plugin;
 	private boolean inProgress = false;
 	private Main instance;
