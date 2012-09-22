@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 /**
  * 
  * Allows things like timers and managers to easily target specific players in a broadcast message.
+ * 
+ * @author James
  */
 public class PlayerMessagePipe {
 	private List<Player> players = new ArrayList<Player>();
